@@ -1,14 +1,17 @@
 require 'httparty'
 require 'json'
-require_relative 'roadmap'
+if require_relative 'roadmap' then puts "roadmap required" end
+if require_relative 'messages' then puts "messages required" end
 
 class Kele
   include HTTParty
   include Roadmap
+  include Messages
 
   def initialize(email, password)
+    @email = email
     @base_api_url = "https://www.bloc.io/api/v1"
-    @options = { body: { email: email, password: password }  }
+    @options = { body: { email: @email, password: password }  }
     response = self.class.post @base_api_url + '/sessions', @options
     @auth_token = response['auth_token']
 
