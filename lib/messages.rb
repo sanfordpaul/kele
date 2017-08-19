@@ -1,6 +1,6 @@
 module Messages
 
-  def get_messages(page)
+  def get_messages(page: 1)
     url = "https://www.bloc.io/api/v1/message_threads"
     headers = {
       :content_type => 'application/json',
@@ -13,9 +13,9 @@ module Messages
 
   def  create_message(
                       sender: @email,
-                      user_id: 2379815,
+                      user_id: @user_id,
                       thread_token: nil,
-                      recipient_id: 2290632,
+                      recipient_id: @mentor_id,
                       subject: "Kele Test Message from Paul Sanford",
                       stripped_text: "This is a test message sent by Paul Sanford for the kele messages checkpoint. No action needed. Feel free to delete after one hour"
                     )
