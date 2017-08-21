@@ -26,6 +26,13 @@ class Kele
        puts exception.message
   end
 
+  def self.do_all
+    kele_client = Kele.new("sanfordpaul@gmail.com", "08r0F3IFFuFk")
+    kele_client.get_me
+    kele_client.get_roadmap
+    kele_client.create_checkpoint_submission
+  end
+
   def get_me
     url = "https://www.bloc.io/api/v1/users/me"
     response = self.class.get(url, headers: { :content_type => 'application/json', :authorization => @auth_token })
